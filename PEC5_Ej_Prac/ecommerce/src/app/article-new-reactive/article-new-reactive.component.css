@@ -1,0 +1,16 @@
+.form-content{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.form-content-article{
+    min-width: 80%;
+    max-width: 80%;
+}
+
+.h1-form-content{
+    padding:30px;
+}

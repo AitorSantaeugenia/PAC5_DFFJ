@@ -1,0 +1,52 @@
+<div class="form-content">
+    <h1 class="h1-form-content"> Crear artículo - Formulario Template</h1>
+    <!-- ------------------- INICI FORMULARI ------------------- -->
+    <form (ngSubmit)="crearArticulo(articuloForm)" #articuloForm="ngForm" class="form-content-article">
+        <div ngModelGroup="articulo">
+            <div class="form-group">
+                <input class="form-control" type="text" ngModel #articleName="ngModel" name="name" placeholder="Nombre del artículo" required/>
+            
+                <div class="text-danger form-text text-danger" *ngIf="(articleName.dirty || submitedForm) && articleName.invalid">
+                    Nombre obligatorio
+                </div>
+            </div>
+            <!-- ----------------------------------------------->        
+            <div class="form-group">
+                <input class="form-control" type="number" ngModel name="price" min="0" placeholder="Precio del artículo" #articlePrice="ngModel" required>
+
+                <div class="text-danger form-text" *ngIf="(articlePrice.dirty || submitedForm) && articlePrice.invalid">
+                        <div *ngIf="articlePrice.errors?.['required']">
+                            Precio obligatorio
+                        </div>
+                        <div *ngIf="articlePrice.errors?.['min']">
+                            Precio debe ser positivo
+                        </div>
+                </div>
+            </div>
+            <!-- -----------------------------------------------> 
+            <div class="form-group">
+                <input class="form-control" type="text" ngModel name="imageUrl" placeholder="URL de la imagen" #articleImageURL="ngModel" pattern="^http(s?)\://[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(/\S*)?/[a-zA-Z0-9_\-]+\.[a-zA-Z]+$" required>
+            
+                <div class="text-danger form-text" *ngIf="(articleImageURL.dirty || submitedForm) && articleImageURL.invalid">
+                    <div *ngIf="articleImageURL.errors?.['required']">
+                        URL obligatoria
+                    </div>
+                    <div *ngIf="articleImageURL.errors?.['pattern']">
+                        URL incorrecta
+                    </div>
+                </div>
+            </div>
+            <!-- -----------------------------------------------> 
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" ngModel name="isOnSale">
+                    El artículo está en venta
+            </div>
+            <br>
+            <button type="submit" class="btn btn-primary">Crear artículo</button>
+        </div>
+    </form>
+    <!-- ------------------- FI FORMULARI ------------------- -->
+    <br>
+    <!-- -------------------- Imprimimos articulo creado -------------------- -->
+    <h4 *ngIf="newArticle">Artículo creado || {{newArticle | json}}</h4>
+</div>

@@ -1,0 +1,63 @@
+.title{
+    text-align: center;
+    border-bottom:1px solid black;
+    padding:0px 0px 5px 0px;
+}
+
+.article-item{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding:20px 0 20px 0;
+    border-bottom:1px solid black;
+}
+
+.article-item-info p{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.article-item-info-counter{
+    padding:5px;
+    margin-top:10px;
+}
+
+.article-item-info-counter span{
+    margin:0px 15px 0px 15px;
+}
+
+.onSale {
+    background-color: rgb(126, 190, 126);
+}
+
+.notOnSale {
+    background-color: rgb(220, 145, 145);
+}
+
+.article-item-out-of-stock{
+    color:red;
+}
+
+.displayTrue{
+    display:inline;
+}
+
+.displayFalse{
+    display:none;
+}
+
+.OnSaleText{
+    color:green;
+}
+
+.NotOnSaleText{
+    color:rgb(103, 103, 103);
+}
+
+.article-item-info-counter-button{
+    min-width: 30px;
+    max-width: 30px;
+    min-height: 30px;
+    max-height: 30px;
+}

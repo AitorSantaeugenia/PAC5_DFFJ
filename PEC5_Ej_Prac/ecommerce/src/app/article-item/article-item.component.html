@@ -1,0 +1,26 @@
+<h1 class="title">PEC4 - Exercici 3</h1>
+<div class="article-item" *ngFor = "let article of article_list" [ngClass]="{'onSale': article.isOnSale == true, 'notOnSale': article.isOnSale == false}">
+    <div class="article-item-out-of-stock" [ngClass]="{'displayTrue': article.isOnSale == false, 'displayFalse': article.isOnSale == true}">
+        <h2>Out of stock</h2>
+    </div>
+    <div class="article-item-image">
+        <img src="{{article.imageUrl}}" alt="{{article.name}}" />
+    </div>
+    <div class="article-item-info">
+        <figcaption>
+            <h2>{{article.name}}</h2>
+            <p [ngClass]="{'OnSaleText': article.isOnSale == true, 'NotOnSaleText': article.isOnSale == false}">{{article.price}} €</p>
+            <p [ngClass]="{'OnSaleText': article.isOnSale == true, 'NotOnSaleText': article.isOnSale == false}">En stock {{article.inStock}} unitats</p>
+            <div class="article-item-info-counter" *ngIf="article.isOnSale == true">
+                <button class="article-item-info-counter-button" (click)="incCounter(article.id)">+</button>
+                <span id="quantity{{article.id}}">{{ article.id === 1 ? this.counter[0] : article.id === 2 ? this.counter[1] : article.id === 3 ? this.counter[2] : '' }}</span>
+
+                <button class="article-item-info-counter-button " (click)="decCounter(article.id)" [ngClass]="{'displayTrue': article.id === 1, 'displayFalse': article.id === 2 || article.id === 3}" *ngIf="this.counter[0]>0">-</button>
+                <button class="article-item-info-counter-button " (click)="decCounter(article.id)" [ngClass]="{'displayTrue': article.id === 2, 'displayFalse': article.id === 1 || article.id === 3}" *ngIf="this.counter[1]>0">-</button>
+                <button class="article-item-info-counter-button " (click)="decCounter(article.id)" [ngClass]="{'displayTrue': article.id === 3, 'displayFalse': article.id === 1 || article.id === 2}" *ngIf="this.counter[2]>0">-</button>
+
+                
+            </div>
+        </figcaption>
+    </div>
+</div>
